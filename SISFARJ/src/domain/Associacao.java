@@ -1,79 +1,113 @@
 package domain;
 
+import java.sql.SQLException;
 import java.util.Date;
 
-import Gateway.AssociacaoGateway;
+import gateway.AssociacaoGateway;
 
 public class Associacao {
 	
-	private Integer numeroOficio;
-	private Date data;
-	private String nome;
-	private String endereco;
-	private String telefone;
-	private Integer numComprocante;
+	private AssociacaoGateway dados;
 	
 	
+	public Associacao(AssociacaoGateway data) {
+		this.dados = data;
+	}
+	
+	public Associacao(Integer numeroOficio, Date data, String nome, String endereco, String telefone,
+			Integer numComprovante) {
+		this.setNumeroOficio(numeroOficio);
+		this.setData(data);
+		this.setEndereco(endereco);
+		this.setNome(nome);
+		this.setTelefone(telefone);
+		this.setNumComprocante(numComprovante);;
+	}
+
+	public Associacao() {
+		this.dados = new AssociacaoGateway();
+	}
 
 	public Integer getNumeroOficio() {
-		return numeroOficio;
+		return dados.getNumeroOficio();
 	}
 
 	public void setNumeroOficio(Integer numeroOficio) {
-		this.numeroOficio = numeroOficio;
+		this.dados.setNumeroOficio(numeroOficio);
 	}
 
 	public Date getData() {
-		return data;
+		return dados.getData();
 	}
 
 	public void setData(Date data) {
-		this.data = data;
+		this.dados.setData(data);
 	}
 
 	public String getNome() {
-		return nome;
+		return dados.getNome();
 	}
 
 	public void setNome(String nome) {
-		this.nome = nome;
+		this.dados.setNome(nome);
 	}
 
 	public String getEndereco() {
-		return endereco;
+		return dados.getEndereco();
 	}
 
 	public void setEndereco(String endereco) {
-		this.endereco = endereco;
+		this.dados.setEndereco(endereco);
 	}
 
 	public String getTelefone() {
-		return telefone;
+		return dados.getTelefone();
 	}
 
 	public void setTelefone(String telefone) {
-		this.telefone = telefone;
+		this.dados.setTelefone(telefone);
 	}
 
 	public Integer getNumComprocante() {
-		return numComprocante;
+		return dados.getNumComprovante();
 	}
 
 	public void setNumComprocante(Integer numComprocante) {
-		this.numComprocante = numComprocante;
+		this.dados.setNumComprovante(numComprocante);
 	}
 	
-	
-
-	public Associacao(Integer numeroOficio, Date data, String nome, String endereco, String telefone,
-			Integer numComprovante) {
-		// TODO Auto-generated constructor stub
+	public String getSigla() {
+		return dados.getSigla();
 	}
 
-	public Associacao inserir() {
-		return AssociacaoGateway.insert(this);
-		// TODO Auto-generated method stub
-		
+
+	public void setSigla(String sigla) {
+		this.dados.setSigla(sigla);
 	}
+
+
+	public Boolean inserir() {
+		Long id = null;
+		try {
+			id = this.dados.insert();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if(id == null) {
+			return false;
+		}else {
+			return true;
+		}
+	}
+	public Boolean update() {
+		try {
+			return this.dados.update();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
 
 }

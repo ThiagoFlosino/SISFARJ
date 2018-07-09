@@ -1,22 +1,28 @@
-package Banco;
+package banco;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import org.h2.jdbcx.JdbcConnectionPool;
+
 public class Banco {
 	
-	public static Connection getConnection() {
-		Connection conn = null;
-		try {
-			conn = DriverManager.getConnection("jdbc:h2:./db/db;MVCC=true;LOCK_TIMEOUT=100","teste","teste");
-			conn.setAutoCommit(true);
-		} catch (SQLException e) {
-			e.printStackTrace();
+	private static JdbcConnectionPool conexao = null;
+	
+	public static Connection getConnection() throws SQLException {
+		if(conexao == null) {
+			try {
+				Class.forName("org.h2.Driver");
+				conexao = JdbcConnectionPool.create("jdbc:h2:~/db/SISFARJ;MVCC=true","teste","teste");
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
 		}
-		return conn;
+		return conexao.getConnection();
 	}
+	
 	
 
 	public static void iniciaBanco() {
@@ -48,11 +54,11 @@ public class Banco {
 		}
 	}
 	
-	public static void main(String[] args) {
-		try {
-			Class.forName("org.h2.Driver");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-	}
+//	public static void main(String[] args) {
+//		try {
+//			Class.forName("org.h2.Driver");
+//		} catch (ClassNotFoundException e) {
+//			e.printStackTrace();
+//		}
+//	}
 }

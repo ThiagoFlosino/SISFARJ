@@ -1,40 +1,40 @@
 package domain;
 
+import gateway.CompeticaoGateway;
+import gateway.PessoaGateway;
+import gateway.ResultadoGateway;
+
 public class Resultado {
 	
-	private Pessoa atleta;
-	private Competicao competicao;
-	private Double pontuacao;
-	private String tempo;
+	private ResultadoGateway dados;
+
+	public Resultado(ResultadoGateway dados) {
+		this.dados = dados;
+	}
 	
 	
-	
-	public Pessoa getAtleta() {
-		return atleta;
+	public PessoaGateway getAtleta() {
+		return dados.getAtleta();
 	}
 	public void setAtleta(Pessoa atleta) {
-		this.atleta = atleta;
+		this.dados.setAtleta(atleta.getDados());
 	}
-	public Competicao getCompeticao() {
-		return competicao;
+	public CompeticaoGateway getCompeticao() {
+		return dados.getCompeticao();
 	}
 	public void setCompeticao(Competicao competicao) {
-		this.competicao = competicao;
+		this.dados.setCompeticao(competicao.getDados());
 	}
 	public Double getPontuacao() {
-		return pontuacao;
+		return dados.getPontuacao();
 	}
 	public void setPontuacao(Double pontuacao) {
-		this.pontuacao = pontuacao;
+		this.dados.setPontuacao(pontuacao);
 	}
 	public String getTempo() {
-		return tempo;
+		return dados.getTempo();
 	}
 	public void setTempo(String tempo) {
-		this.tempo = tempo;
-	}
-	
-	
-	
-
+		this.dados.setTempo(tempo);
+	}	
 }

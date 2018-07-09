@@ -1,30 +1,42 @@
 package domain;
 
+import gateway.ClasseGateway;
 
 public class Classe {
 	
-	private String nome;
-	private Integer idadeInicio;
-	private Integer idadeFim;
+	private ClasseGateway dados;
+	
+	public Classe(ClasseGateway dados) {
+		this.dados = dados;
+	}
 	
 	public String getNome() {
-		return nome;
+		return dados.getNome();
 	}
 	public void setNome(String nome) {
-		this.nome = nome;
+		this.dados.setNome(nome);
 	}
 	public Integer getIdadeInicio() {
-		return idadeInicio;
+		return dados.getIdadeInicio();
 	}
 	public void setIdadeInicio(Integer idadeInicio) {
-		this.idadeInicio = idadeInicio;
+		this.dados.setIdadeInicio(idadeInicio);
 	}
 	public Integer getIdadeFim() {
-		return idadeFim;
+		return dados.getIdadeFim();
 	}
 	public void setIdadeFim(Integer idadeFim) {
-		this.idadeFim = idadeFim;
+		this.dados.setIdadeFim(idadeFim);
 	}
+
+	public ClasseGateway getDados() {
+		return dados;
+	}
+
+	public void setDados(ClasseGateway dados) {
+		this.dados = dados;
+	}
+	
 
 	
 }

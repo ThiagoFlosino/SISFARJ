@@ -3,43 +3,58 @@ package domain;
 import java.util.Date;
 import java.util.List;
 
+import gateway.CategoriaGateway;
+import gateway.ClasseGateway;
+import gateway.CompeticaoGateway;
+
 public class Competicao {
-	private LocalCompeticao localCompeticao;
-	private List<Categoria> categorias;
-	private List<Classe> classes;
-	private String nome;
-	private Date data;
+	
+	private CompeticaoGateway dados;
+	
+	public Competicao(CompeticaoGateway dados) {
+		this.dados = dados;
+	}
 	
 	
+	public CompeticaoGateway getDados() {
+		return dados;
+	}
+
+
+	public void setDados(CompeticaoGateway dados) {
+		this.dados = dados;
+	}
+
+
 	public LocalCompeticao getLocalCompeticao() {
-		return localCompeticao;
+		return dados.getLocalCompeticao();
 	}
 	public void setLocalCompeticao(LocalCompeticao localCompeticao) {
-		this.localCompeticao = localCompeticao;
+		this.dados.setLocalCompeticao(localCompeticao);
 	}
-	public List<Categoria> getCategorias() {
-		return categorias;
+	public List<CategoriaGateway> getCategorias() {
+		return dados.getCategorias();
 	}
 	public void setCategorias(Categoria categorias) {
-		this.categorias.add(categorias);
+		this.dados.getCategorias().add(categorias.getDados());
 	}
-	public List<Classe> getClasses() {
-		return classes;
+	public List<ClasseGateway> getClasses() {
+		return dados.getClasses();
 	}
 	public void setClasses(Classe classes) {
-		this.classes.add(classes);
+		this.dados.getClasses().add(classes.getDados());
 	}
 	public String getNome() {
-		return nome;
+		return dados.getNome();
 	}
 	public void setNome(String nome) {
-		this.nome = nome;
+		this.dados.setNome(nome);
 	}
 	public Date getData() {
-		return data;
+		return dados.getData();
 	}
 	public void setData(Date data) {
-		this.data = data;
+		this.dados.setData(data);
 	}
 	
 	

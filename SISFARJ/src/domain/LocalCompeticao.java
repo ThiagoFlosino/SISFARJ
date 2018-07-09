@@ -1,34 +1,36 @@
 package domain;
 
+import gateway.LocalCompeticaoGateway;
+
 public class LocalCompeticao {
 	
-	private String nome;
-	private String endereco;
-	private Integer tipoPiscina;
+	private LocalCompeticaoGateway dados;
 	
+	public LocalCompeticao(LocalCompeticaoGateway dados) {
+		this.dados = dados;
+	}
 	
 	public String getNome() {
-		return nome;
+		return dados.getNome();
 	}
 	
 	public void setNome(String nome) {
-		this.nome = nome;
+		this.dados.setNome(nome);
 	}
 	
 	public String getEndereco() {
-		return endereco;
+		return dados.getEndereco();
 	}
 	
 	public void setEndereco(String endereco) {
-		this.endereco = endereco;
+		this.dados.setEndereco(endereco);
 	}
 	
 	public Integer getTipoPiscina() {
-		return tipoPiscina;
+		return dados.getTipoPiscina();
 	}
 	
 	public void setTipoPiscina(Integer tipoPiscina) {
-		this.tipoPiscina = tipoPiscina;
+		this.dados.setTipoPiscina(tipoPiscina);
 	}
-
 }

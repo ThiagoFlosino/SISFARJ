@@ -2,37 +2,54 @@ package domain;
 
 import java.util.Date;
 
+import gateway.PessoaGateway;
+
 public class Pessoa {
-	private String nome;
-	private Date dataNascimento;
-	private String matricula;
-	private String senha;
+	
+	private PessoaGateway dados;
+
+	public Pessoa(PessoaGateway dados) {
+		this.dados = dados;
+	}
 	
 	public String getNome() {
-		return nome;
+		return dados.getNome();
 	}
+	
 	public void setNome(String nome) {
-		this.nome = nome;
+		this.dados.setNome(nome);
 	}
+	
 	public Date getDataNascimento() {
-		return dataNascimento;
+		return dados.getDataNascimento();
 	}
+	
 	public void setDataNascimento(Date dataNascimento) {
-		this.dataNascimento = dataNascimento;
+		this.dados.setDataNascimento(dataNascimento);
 	}
+	
 	public String getMatricula() {
-		return matricula;
+		return dados.getMatricula();
 	}
+	
 	public void setMatricula(String matricula) {
-		this.matricula = matricula;
+		this.dados.setMatricula(matricula);
 	}
+	
 	public String getSenha() {
-		return senha;
+		return dados.getSenha();
 	}
+	
 	public void setSenha(String senha) {
-		this.senha = senha;
+		this.dados.setSenha(senha);
+	}
+
+	public PessoaGateway getDados() {
+		return dados;
+	}
+
+	public void setDados(PessoaGateway dados) {
+		this.dados = dados;
 	}
 	
-	
-
 }
